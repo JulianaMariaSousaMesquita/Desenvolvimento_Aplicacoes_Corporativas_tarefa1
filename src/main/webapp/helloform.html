@@ -13,35 +13,34 @@ and open the template in the editor.
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    	<li class="nav-item active"><a class="nav-item nav-link active" href="https://infinite-savannah-77606.herokuapp.com/">Home <span class="sr-only">(current)</span></a></li>
+    	<li class="nav-item active"><a class="nav-item nav-link active" href="https://infinite-savannah-77606.herokuapp.com/">Home<span class="sr-only"></span></a></li>
   		<li class="nav-item"><a href=".\alomundo?lang=pt&nome=Fulano">Método GET</a></li>
   		<li class="nav-item"><a href=".\helloform.html">Método POST</a></li>
 	</nav>
-	<br><br><br><br>
-    <div class="container">
-    <div class="row">
-	    <div class="col-9">
-	    	<h1>Formulário de HelloWorld</h1>
-	    </div>
-	    <div class="col-4">
-	    	<form action="alomundo" method="post">
-           <br>Idioma: <input type="radio" name="lang" value="pt" checked> Português
-           <input type="radio" name="lang" value="en"> Inglês
-           <input type="radio" name="lang" value="fr"> Francês
-           <input type="radio" name="lang" value="de"> Alemão
-           <input type="radio" name="lang" value="es"> Espanhol
-           <input type="radio" name="lang" value="no"> Norueguês
-           <br><br>
-        </div>
-	   <div class="col-6">
-	   	Nome: <input type="text" name="nome"/><br><br>
-	   </div>
-  	<div class="col-9">
-  		<button type="submit" class="btn btn-danger">Cumprimentar</button>
-       	</form>
+	<br><br><br><br>	
+	 <div class="container">
+	     <div class="row">
+	     	<div class="col-md-9 ms-md-auto"><h1>Formulário de HelloWorld</h1><br><br> </div>
+	     </div>  
+     	<div class="row">
+		    <div class="col">
+		      <form action="alomundo" method="post">
+		           <br>Idioma: <input type="radio" name="lang" value="pt" checked> Português
+		           <input type="radio" name="lang" value="en"> Inglês
+		           <input type="radio" name="lang" value="fr"> Francês
+		           <input type="radio" name="lang" value="de"> Alemão
+		           <input type="radio" name="lang" value="es"> Espanhol
+		           <input type="radio" name="lang" value="no"> Norueguês
+		           <br><br>
+		    </div>
+		    <div class="col">
+		      		Nome: <input type="text" name="nome"/><br><br>
+   		 	</div>
+  		</div>
+  		<div class="row">
+			     	<button type="submit" class="btn btn-danger">Cumprimentar</button>
+		       	</form>
+	     </div>
     </div>
-  </div>
-    
-	</div>
     </body>
 </html>
