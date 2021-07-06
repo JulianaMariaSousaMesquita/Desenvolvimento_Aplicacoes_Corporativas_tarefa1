@@ -59,10 +59,39 @@ public class HelloServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>Servlet HelloServlet</title>");
+            out.println("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n"
+            		+ "	  <div class=\"container-fluid\">\r\n"
+            		+ "	    <a class=\"navbar-brand\" href=\"https://github.com/JulianaMariaSousaMesquita/Desenvolvimento_Aplicacoes_Corporativas_tarefa1/\">Git Hub - Code </a>\r\n"
+            		+ "	    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n"
+            		+ "	      <span class=\"navbar-toggler-icon\"></span>\r\n"
+            		+ "	    </button>\r\n"
+            		+ "	    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n"
+            		+ "	      <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link active\" aria-current=\"page\" href=\"https://infinite-savannah-77606.herokuapp.com/\">Home</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link\" href=\".\\alomundo?lang=pt&nome=Fulano\">Método GET</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link\" href=\".\\helloform.html\">Método POST</a>\r\n"
+            		+ "	        </li>	        \r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Hello World - em outros idiomas</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	      </ul>\r\n"
+            		+ "	      <form class=\"d-flex\">\r\n"
+            		+ "	        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\r\n"
+            		+ "	        <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>\r\n"
+            		+ "	      </form>\r\n"
+            		+ "	    	</div>\r\n"
+            		+ "	  	</div>\r\n"
+            		+ "	</nav>\r\n"
+            		+ "	<br><br><br>");
             out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" +ola+nome+ "!</h1>"+"Horario: "+calendar.get((Calendar.HOUR_OF_DAY)));            
+            out.println("<body>");         
+            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a>  </div></div>");            
             out.println("</body>");
             out.println("</html>");
         }
@@ -99,9 +128,38 @@ public class HelloServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n"
+            		+ "	  <div class=\"container-fluid\">\r\n"
+            		+ "	    <a class=\"navbar-brand\" href=\"https://github.com/JulianaMariaSousaMesquita/Desenvolvimento_Aplicacoes_Corporativas_tarefa1/\">Git Hub - Code </a>\r\n"
+            		+ "	    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n"
+            		+ "	      <span class=\"navbar-toggler-icon\"></span>\r\n"
+            		+ "	    </button>\r\n"
+            		+ "	    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n"
+            		+ "	      <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link active\" aria-current=\"page\" href=\"https://infinite-savannah-77606.herokuapp.com/\">Home</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link\" href=\".\\alomundo?lang=pt&nome=Fulano\">Método GET</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link\" href=\".\\helloform.html\">Método POST</a>\r\n"
+            		+ "	        </li>	        \r\n"
+            		+ "	        <li class=\"nav-item\">\r\n"
+            		+ "	          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Hello World - em outros idiomas</a>\r\n"
+            		+ "	        </li>\r\n"
+            		+ "	      </ul>\r\n"
+            		+ "	      <form class=\"d-flex\">\r\n"
+            		+ "	        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\r\n"
+            		+ "	        <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>\r\n"
+            		+ "	      </form>\r\n"
+            		+ "	    	</div>\r\n"
+            		+ "	  	</div>\r\n"
+            		+ "	</nav>\r\n"
+            		+ "	<br><br><br>");
             out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" +ola+nome+"!</h1>"+"Horario: "+calendar.get((Calendar.HOUR_OF_DAY)));            
+            out.println("<body>");         
+            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a>  </div></div>");            
             out.println("</body>");
             out.println("</html>");
         }
