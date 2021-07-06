@@ -92,7 +92,7 @@ public class HelloServlet extends HttpServlet {
             		+ "	<br><br><br>");
             out.println("</head>");
             out.println("<body>");         
-            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a>  </div></div>");            
+            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a></div>  </div></div>");            
             out.println("</body>");
             out.println("</html>");
         }
@@ -161,7 +161,7 @@ public class HelloServlet extends HttpServlet {
             		+ "	<br><br><br>");
             out.println("</head>");
             out.println("<body>");         
-            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a>  </div></div>");            
+            out.println("<div class=\"container\"> <div class=\"row\"> <h1> <div class=\"col-md-9 ms-md-auto\">" +ola+nome+ "!</h1></div>"+"<div class=\"col-md-9 ms-md-auto\">Horario:"+calendar.get((Calendar.HOUR_OF_DAY))+"</div> <div class=\\\"col-md-9 ms-md-auto\\\"> <a href=\"https://infinite-savannah-77606.herokuapp.com/\" class=\"btn btn-primary btn-lg disabled\" role=\"button\" aria-disabled=\"true\">Voltar</a></div>  </div></div>");            
             out.println("</body>");
             out.println("</html>");
         }
