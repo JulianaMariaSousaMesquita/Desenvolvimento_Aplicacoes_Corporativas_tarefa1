@@ -62,7 +62,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" +ola+ ", " +nome+ "!</h1>"+calendar.get((Calendar.HOUR_OF_DAY)));            
+            out.println("<h1>" +ola+nome+ "!</h1>"+"Horario: "+calendar.get((Calendar.HOUR_OF_DAY)));            
             out.println("</body>");
             out.println("</html>");
         }
@@ -101,7 +101,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" +ola+ ", " +nome+"!</h1>"+calendar.get((Calendar.HOUR_OF_DAY)));            
+            out.println("<h1>" +ola+nome+"!</h1>"+"Horario: "+calendar.get((Calendar.HOUR_OF_DAY)));            
             out.println("</body>");
             out.println("</html>");
         }
@@ -112,56 +112,56 @@ public class HelloServlet extends HttpServlet {
     	switch (lang) {
     	case "":
         case "pt":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "Bom dia, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Boa tarde, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "Boa noite, ";
         	}	        	
             break;
         case "en":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "Good morning, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Good afternoon, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "Good night, ";
         	}	  
             break;
         case "fr":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "Bonjour, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Bonne apr�s-midi, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "Bonne nuit, ";
         	}
             break;
         case "de":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "Guten Morgen, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Guten Nachmittag, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "Gute Nacht, ";
         	}	
             break;
         case "es":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "Buenos d�as, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Buenas tardes, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "Buenas noches, ";
         	}
             break;
         case "no":
-        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
         		msg = "God morgen, ";
-        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "God ettermiddag, ";
-        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
         		msg = "God natt, ";
         	}	 
             break;
