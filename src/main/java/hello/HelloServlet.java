@@ -7,8 +7,12 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,37 +20,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ *
+ * @author juh
+ */
 @WebServlet("/alomundo")
 public class HelloServlet extends HttpServlet {
+	LocalDateTime date = LocalDateTime.now();
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HelloServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -58,87 +39,29 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
-    	Calendar calendar = new GregorianCalendar();
-        String msg = "";
         
         String lang = request.getParameter("lang");
-        if(lang==null)
-            lang = "pt";
-        switch(lang){
-	        case "pt":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Bom dia, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Boa tarde, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Boa noite, ";
-	        	}	        	
-	            break;
-	        case "en":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Good morning, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Good afternoon, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Good night, ";
-	        	}	  
-	            break;
-	        case "fr":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Bonjour, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Bonne apr�s-midi, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Bonne nuit, ";
-	        	}
-	            break;
-	        case "de":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Guten Morgen, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Guten Nachmittag, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Gute Nacht, ";
-	        	}	
-	            break;
-	        case "es":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Buenos d�as, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Buenas tardes, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Buenas noches, ";
-	        	}
-	            break;
-	        case "no":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "God morgen, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "God ettermiddag, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "God natt, ";
-	        	}	 
-	            break;
+        if(lang==null) {
+        	lang = "por";
+        }
+
+        String ola = this.cumprimentos(lang);
         
         String nome = request.getParameter("nome");
-
-        if(nome==null)
-            nome = "Fulano";
+        if(nome == "") {
+        	nome = "Fulano";	
+        }
         
-        msg = msg+nome+"!";
-
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HelloServlet</h1>");
-            out.println("<p>" + msg + "</p>");
+            out.println("<h1>" +ola+ ", " +nome+ "!</h1>");
+            out.println("<p>São " +this.date.getHour()+ "h do dia " +this.date.getDayOfMonth()+"/"+this.date.getMonthValue()+ " de "+this.date.getYear()+"</p>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -155,75 +78,18 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	Calendar calendar = new GregorianCalendar();
-    	String msg = "";
-        
-        String lang = request.getParameter("lang");
-        if(lang==null)
-            lang = "pt";
-        switch(lang){
-	        case "pt":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Bom dia, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Boa tarde, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Boa noite, ";
-	        	}	        	
-	            break;
-	        case "en":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Good morning, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Good afternoon, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Good night, ";
-	        	}	  
-	            break;
-	        case "fr":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Bonjour, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Bonne apr�s-midi, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Bonne nuit, ";
-	        	}
-	            break;
-	        case "de":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Guten Morgen, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Guten Nachmittag, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Gute Nacht, ";
-	        	}	
-	            break;
-	        case "es":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "Buenos d�as, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "Buenas tardes, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "Buenas noches, ";
-	        	}
-	            break;
-	        case "no":
-	        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
-	        		msg = "God morgen, ";
-	        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
-	        		msg = "God ettermiddag, ";
-	        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
-	        		msg = "God natt, ";
-	        	}	 
-	            break;
-	        }
+
+    	String lang = request.getParameter("lang");
+        if(lang==null) {
+        	lang = "por";        	
+        }
+
+        String ola = this.cumprimentos(lang);
         
         String nome = request.getParameter("nome");
-
-        if(nome==null)
-            nome = "Fulano";
-        
-        msg = msg+nome+"!";
+        if(nome == "") {
+        	nome = "Fulano";
+        }
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -234,21 +100,83 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HelloServlet</h1>");
-            out.println("<p>" + msg + "</p>");
+            out.println("<h1>" +ola+ ", " +nome+"!</h1>");
+            out.println("<p>São " +this.date.getHour()+ "h do dia " +this.date.getDayOfMonth()+"/"+this.date.getMonthValue()+ " de "+this.date.getYear()+"</p>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    public String cumprimentos(String lang) {
+    	
+    	ArrayList<String> porGreeting = new ArrayList<>(Arrays.asList("Bom dia", "Boa tarde", "Boa noite"));
+    	ArrayList<String> engGreeting = new ArrayList<>(Arrays.asList("Good morning", "Good afternoon", "Good night"));
+    	ArrayList<String> gerGreeting = new ArrayList<>(Arrays.asList("Guden morgen", "Guden tag", "Gute nacht"));
+    	ArrayList<String> spaGreeting = new ArrayList<>(Arrays.asList("Buen día", "Buenas tardes", "Buenas noches"));
+    	ArrayList<String> freGreeting = new ArrayList<>(Arrays.asList("Bonjuor", "Bon aprés-midi", "Bonne nuit"));
+    	ArrayList<String> speGreeting = new ArrayList<>(Arrays.asList("Bonan matenon", "Bonan posttagmezon", "Bonan nokton"));
+    	
+    	String message = "";
+    	switch (lang) {
+		case "por":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = porGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = porGreeting.get(1);
+			} else {
+				message = porGreeting.get(2);
+			}
+			break;
+		case "eng":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = engGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = engGreeting.get(1);
+			} else {
+				message = engGreeting.get(2);
+			}
+			break;
+		case "ger":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = gerGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = gerGreeting.get(1);
+			} else {
+				message = gerGreeting.get(2);
+			}
+			break;
+		case "spa":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = spaGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = spaGreeting.get(1);
+			} else {
+				message = spaGreeting.get(2);
+			}
+			break;
+		case "fre":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = freGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = freGreeting.get(1);
+			} else {
+				message = freGreeting.get(2);
+			}
+			break;
+		case "spe":
+			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
+				message = speGreeting.get(0);
+			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
+				message = speGreeting.get(1);
+			} else {
+				message = speGreeting.get(2);
+			}
+			break;
+		default:
+			message = "erro";
+			break;
+		}
+    	
+    	return message;
+    }
 }
