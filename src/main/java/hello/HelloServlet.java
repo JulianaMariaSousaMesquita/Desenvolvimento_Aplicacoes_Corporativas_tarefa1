@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,7 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/alomundo")
 public class HelloServlet extends HttpServlet {
-	LocalDateTime date = LocalDateTime.now();
+	
+	Calendar calendar = new GregorianCalendar();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -60,8 +62,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" +ola+ ", " +nome+ "!</h1>");
-            out.println("<p>São " +this.date.getHour()+ "h do dia " +this.date.getDayOfMonth()+"/"+this.date.getMonthValue()+ " de "+this.date.getYear()+"</p>");
+            out.println("<h1>" +ola+ ", " +nome+ "!</h1>"+calendar);            
             out.println("</body>");
             out.println("</html>");
         }
@@ -100,83 +101,75 @@ public class HelloServlet extends HttpServlet {
             out.println("<title>Servlet HelloServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>" +ola+ ", " +nome+"!</h1>");
-            out.println("<p>São " +this.date.getHour()+ "h do dia " +this.date.getDayOfMonth()+"/"+this.date.getMonthValue()+ " de "+this.date.getYear()+"</p>");
+            out.println("<h1>" +ola+ ", " +nome+"!</h1>"+calendar);            
             out.println("</body>");
             out.println("</html>");
         }
     }
 
     public String cumprimentos(String lang) {
-    	
-    	ArrayList<String> porGreeting = new ArrayList<>(Arrays.asList("Bom dia", "Boa tarde", "Boa noite"));
-    	ArrayList<String> engGreeting = new ArrayList<>(Arrays.asList("Good morning", "Good afternoon", "Good night"));
-    	ArrayList<String> gerGreeting = new ArrayList<>(Arrays.asList("Guden morgen", "Guden tag", "Gute nacht"));
-    	ArrayList<String> spaGreeting = new ArrayList<>(Arrays.asList("Buen día", "Buenas tardes", "Buenas noches"));
-    	ArrayList<String> freGreeting = new ArrayList<>(Arrays.asList("Bonjuor", "Bon aprés-midi", "Bonne nuit"));
-    	ArrayList<String> speGreeting = new ArrayList<>(Arrays.asList("Bonan matenon", "Bonan posttagmezon", "Bonan nokton"));
-    	
-    	String message = "";
+    	String msg = "";
     	switch (lang) {
-		case "por":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = porGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = porGreeting.get(1);
-			} else {
-				message = porGreeting.get(2);
-			}
-			break;
-		case "eng":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = engGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = engGreeting.get(1);
-			} else {
-				message = engGreeting.get(2);
-			}
-			break;
-		case "ger":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = gerGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = gerGreeting.get(1);
-			} else {
-				message = gerGreeting.get(2);
-			}
-			break;
-		case "spa":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = spaGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = spaGreeting.get(1);
-			} else {
-				message = spaGreeting.get(2);
-			}
-			break;
-		case "fre":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = freGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = freGreeting.get(1);
-			} else {
-				message = freGreeting.get(2);
-			}
-			break;
-		case "spe":
-			if(this.date.getHour() > 6 && this.date.getHour() < 12) {
-				message = speGreeting.get(0);
-			} else if(this.date.getHour() > 12 && this.date.getHour() < 18) {
-				message = speGreeting.get(1);
-			} else {
-				message = speGreeting.get(2);
-			}
-			break;
+    	case "":
+        case "pt":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "Bom dia, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "Boa tarde, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "Boa noite, ";
+        	}	        	
+            break;
+        case "en":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "Good morning, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "Good afternoon, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "Good night, ";
+        	}	  
+            break;
+        case "fr":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "Bonjour, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "Bonne apr�s-midi, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "Bonne nuit, ";
+        	}
+            break;
+        case "de":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "Guten Morgen, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "Guten Nachmittag, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "Gute Nacht, ";
+        	}	
+            break;
+        case "es":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "Buenos d�as, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "Buenas tardes, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "Buenas noches, ";
+        	}
+            break;
+        case "no":
+        	if(calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+        		msg = "God morgen, ";
+        	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) > 17)) {
+        		msg = "God ettermiddag, ";
+        	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 17){
+        		msg = "God natt, ";
+        	}	 
+            break;
 		default:
-			message = "erro";
+			msg = "Erro - Opção invalida!";
 			break;
 		}
     	
-    	return message;
+    	return msg;
     }
 }
