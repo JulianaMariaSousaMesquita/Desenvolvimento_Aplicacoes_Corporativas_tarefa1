@@ -149,7 +149,7 @@ public class HelloServlet extends HttpServlet {
             break;
         case "es":
         	if(calendar.get(Calendar.HOUR_OF_DAY) <= 12) {
-        		msg = "Buenos d�as, ";
+        		msg = "Buenos dias, ";
         	}else if(calendar.get((Calendar.HOUR_OF_DAY)) > 12 && (calendar.get(Calendar.HOUR_OF_DAY) <= 18)) {
         		msg = "Buenas tardes, ";
         	}else if(calendar.get(Calendar.HOUR_OF_DAY) > 18){
