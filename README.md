@@ -4,7 +4,7 @@ Professor : <a href="https://github.com/jviterbo"> Viterbo </a>
 
 Aluna: <a href="https://github.com/JulianaMariaSousaMesquita">Juliana Mesquita</a>
 
-Tarefa 1 (link) - <a href="https://infinite-savannah-77606.herokuapp.com/> HEROKU </a>
+Tarefa 1 (link) - <a href="https://infinite-savannah-77606.herokuapp.com/"> HEROKU </a>
 
 ## Tarefa 01: Hello World no Heroku   
 
